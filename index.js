@@ -33,7 +33,10 @@ message = message + row;
 
  //- Prompt the user for a user id
 
+
  let userId = prompt("Who's ID do you wanna check? Use an ID number.");
+
+ 
 
 //- Display an alert with the username and all the todos titles that belong to that user 
 
@@ -46,12 +49,33 @@ const todosId = "ID: " + todos[i].id;
 const todosTitleTasks = "Tittle: " + todos[i].title;
 const todosCompletedTasks = "Completed: " + todos[i].completed;
 
-const row = `${todosUserId} || ${todosId} || ${todosTitleTasks}||  ${todosCompletedTasks} \n`;
+const row = ` \n ${todosUserId} | ${todosId} | ${todosTitleTasks} | ${todosCompletedTasks}`;
+ console.log(todosUserId,userId);
 
-if(todosUserId == userId){
+if(todosUserId === Number(userId)){
 messageAlert = messageAlert + row;
-}else{
-  messageAlert = "Try again!";
 }
 }
- alert(messageAlert);
+
+let messageName ="";
+
+for (let i=0; i<users.length; i++){
+    const surname = users[i].username;
+    const idSurname = users[i].id;
+
+    if(idSurname === Number(userId)){
+        messageName = messageName + surname ;
+        console.log(messageName);
+    }
+}
+
+ alert(messageName+messageAlert);
+
+
+ /*
+ Challenge
+After you select a user, add the option to either show the todos or add a new todo to the list
+
+Challenge 2
+Now that you can add a todo, add the option to either delete or update a todo. Add also the option to repeatedly choose a different user, or to finish the program
+*/
